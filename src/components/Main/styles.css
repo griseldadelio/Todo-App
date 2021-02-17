@@ -1,0 +1,12 @@
+.main {
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding: 40px;
+  }
+  
+  .backGround{
+    background-image: url(../../assets/img/backGround.jpg);
+    background-size: cover;
+    background-position: center;
+  }

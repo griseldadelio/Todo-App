@@ -1,0 +1,23 @@
+.custom-botton .btn {
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    margin-right: 0.1rem;
+  }
+  .card-header {
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border: none;
+  }
+  .card {
+    border: none;
+  }
+
+  #div1, #div2, #div3, #div4,#div5 {
+    float: left;
+    width: 200px;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+  }

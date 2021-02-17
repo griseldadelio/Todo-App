@@ -1,0 +1,21 @@
+.login{
+    height: 650px;
+}
+.color{
+    background-color: #727cf5 ;
+}
+.form-check-input:checked{
+    background-color:#727cf5 !important ;
+    border-color:#5966f3 !important ;
+}
+
+.btn-color{
+    background-color: #727cf5 ;
+    border-color: #727cf5 ;
+    color: white;
+}
+.btn-color:hover {
+    background-color: #727cf5 ;
+    border-color: #727cf5 ;
+    color: white;
+}
