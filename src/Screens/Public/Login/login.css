@@ -19,3 +19,7 @@
     border-color: #727cf5 ;
     color: white;
 }
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}

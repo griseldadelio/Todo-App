@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { api } from "../../utils";
+import { api } from "../../../../utils";
 import { useTranslation } from "react-i18next";
-import { Layout, Main } from "../../components";
+import { Layout, Main } from "../../../../components";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
@@ -19,9 +19,13 @@ const AddUsersForm = () => {
             lastName: lastName,
             email: email,
             password: password,
-        });
-        let form = e.target;
-        form.reset();
+        })
+            .then(() => {
+                setName('')
+                setlastName('')
+                setEmail('')
+                setPassword('')
+            })
     };
     const [t] = useTranslation("global");
 

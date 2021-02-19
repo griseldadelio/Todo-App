@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { api } from "../../utils";
+import { api } from "../../../../utils";
 import { useTranslation } from "react-i18next";
-import { Layout, Main } from "../../components";
+import { Layout, Main } from "../../../../components";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 
-const AddTask = () => {
+const Add = () => {
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
     const [description, setDescription] = useState();
@@ -26,7 +26,13 @@ const AddTask = () => {
             date: date,
             description: description,
             assigned: assigned,
-        });
+        })
+            .then(() => {
+                setTitle("")
+                setDate("")
+                setDescription("")
+                setAssigned("")
+            })
     };
     const [t] = useTranslation("global");
 
@@ -54,4 +60,4 @@ const AddTask = () => {
     );
 };
 
-export { AddTask };
+export { Add };

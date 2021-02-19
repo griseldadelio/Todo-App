@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../utils";
+import { api } from "../../../../utils";
 import { useTranslation } from "react-i18next";
-import { Layout, Main } from "../../components";
-import { objectToArray } from "../../helpers";
+import { Layout, Main } from "../../../../components";
+import { objectToArray } from "../../../../helpers";
 import { TableUsers } from "./components";
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container'
 
 
-const Users = () => {
+const User = () => {
     const [t] = useTranslation("global");
     const [users, setUsers] = useState([]);
 
@@ -50,4 +50,4 @@ const Users = () => {
     );
 };
 
-export { Users };
+export { User };

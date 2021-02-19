@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../utils";
+import { api } from "../../../../utils";
 import { useTranslation } from "react-i18next";
-import { Layout, Main } from "../../components";
-import { objectToArray } from "../../helpers";
+import { Layout, Main } from "../../../../components";
+import { objectToArray } from "../../../../helpers";
 import { CardTask } from "./components";
 import './task.css'
 
 
-const Task = () => {
+const List = () => {
     const [t] = useTranslation("global");
     const [tasks, setTask] = useState([]);
 
@@ -17,6 +17,7 @@ const Task = () => {
             .then((response) => {
                 const data = objectToArray(response.data);
                 setTask(data);
+                console.log(data)
 
             })
             .catch((error) => console.log(error));
@@ -51,7 +52,7 @@ const Task = () => {
                     <div id="div5" onDrop={e => drop(e)} onDragOver={e => allowDrop(e)} />
                     {tasks.map(({ title, date, assigned, description, status, id }) => {
                         return (
-                            <div id={`drag ${id}`} draggable="true" onDragStart={e => drag(e)}>
+                            <div id={`drag${id}`} draggable="true" onDragStart={e => drag(e)}>
                                 <CardTask className="m-3" style={{ width: "18rem", border: "1px solid" }}
                                     title={title}
                                     description={description}
@@ -69,4 +70,4 @@ const Task = () => {
     );
 };
 
-export { Task };
+export { List };

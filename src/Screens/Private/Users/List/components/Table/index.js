@@ -1,5 +1,5 @@
 import React from 'react';
-import { api } from "../../../../utils";
+import { api } from "../../../../../../utils";
 
 const TableUsers = ({ name, lastName, email, password, id }) => {
     api
