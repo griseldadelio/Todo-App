@@ -2,12 +2,14 @@ import { firebaseAuth } from '../../utils'
 
 const useAuth = () => {
 
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+
     const login = async ({ email, password }) => {
         return await firebaseAuth
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((response) => {
-                console.log(response)
+                setIsAuthenticated(true)
             });
     }
 
@@ -28,7 +30,8 @@ const useAuth = () => {
     return {
         login,
         register,
-        logout
+        logout,
+        isAuthenticated
     }
 }
 export { useAuth }
