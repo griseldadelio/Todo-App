@@ -1,8 +1,9 @@
-import { Private } from './Screens/Private';
-import { Public } from './Screens/Public';
+import { Private } from './screens/Private';
+import { Public } from './screens/Public';
+import { useAuth } from './hooks';
 
 const App = () => {
-    const isAuthenticated = true;
+    const { isAuthenticated } = useAuth()
     return isAuthenticated ? <Private /> : <Public />;
 };
 

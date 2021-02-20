@@ -21,8 +21,8 @@ const Aside = () => {
                     </div>
                     <Accordion.Collapse id="collapseUsers" aria-labelledby="headingUsers" data-bs-parent="#accordionMenu">
                         <div className="accordion-body">
-                            <Link to="/users">{t("aside.list")}</Link>
-                            <Link to="/addUsers">{t("aside.add")}</Link>
+                            <Link to="/users/">{t("aside.list")}</Link>
+                            <Link to="/users/add">{t("aside.add")}</Link>
                         </div>
                     </Accordion.Collapse>
                 </div>
@@ -34,8 +34,8 @@ const Aside = () => {
                     </div>
                     <Accordion.Collapse id="collapseTasks" aria-labelledby="headingTasks" data-bs-parent="#accordionMenu">
                         <div className="accordion-body">
-                            <Link to="/">{t("aside.list")}</Link>
-                            <Link to="/addTask">{t("aside.add")}</Link>
+                            <Link to="/tasks/">{t("aside.list")}</Link>
+                            <Link to="/tasks/add">{t("aside.add")}</Link>
                         </div>
                     </Accordion.Collapse>
                 </div>

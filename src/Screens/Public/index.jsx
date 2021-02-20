@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Login } from './Login';
+import { Register } from './Register'
 
 
 export const Public = () => {
@@ -9,6 +10,7 @@ export const Public = () => {
         <Router>
             <Switch>
                 <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
             </Switch>
         </Router>
     )

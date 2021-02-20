@@ -8,7 +8,7 @@ export const Private = () => {
         <Router>
             <Switch>
                 <Route path='/tasks' component={Tasks} />
-                <Route path='/' component={Users} />
+                <Route path='/users' component={Users} />
             </Switch>
         </Router>
     )
