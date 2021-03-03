@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { api } from "../../../../../../utils";
 import "./card.css";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+import { task } from '../../../../../../utils'
+import { Col, Row, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { PencilFill } from "react-bootstrap-icons";
 
 const CardTask = ({ title, description, assigned, date, status, id }) => {
     const [taskStatus, setTaskStatus] = useState(status);
-
+    const handleOnClick = (status) => {
+        setTaskStatus(status);
+        task.patch(id, { status })
+    }
     const getCardColor = () => {
         switch (taskStatus) {
             case "pending":
@@ -20,18 +22,8 @@ const CardTask = ({ title, description, assigned, date, status, id }) => {
         }
     };
 
-    const handleOnClick = (taskStatus) => {
-        api
-            .patch(`/tareas/${id}.json`, {
-                status: taskStatus,
-            })
-            .then((response) => {
-                setTaskStatus(response.data.status);
-            });
-    };
-
     return (
-        <div className={`card text-dark  ${getCardColor()}  shadow-sm`}>
+        <div className={`card text-dark  ${getCardColor()} ${taskStatus}  shadow-sm`}>
             <div className="card-body">
                 <Row>
                     <Col>
@@ -52,6 +44,9 @@ const CardTask = ({ title, description, assigned, date, status, id }) => {
                         </Col>
                     </Row>
                 </Row>
+                <Link to={`/tasks/edit/${id}`} className="mx-2">
+                    <PencilFill />
+                </Link>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import Logo from "../../../assets/img/logo-fucsia-Ada.png";
 import { Row, Card, Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from '../../../hooks';
 
-const Register = () => {
+const SingIn = () => {
     const [fullName, setFullName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -14,12 +14,7 @@ const Register = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        register(
-            {
-                fullName: fullName,
-                email: email,
-                password: password,
-            })
+        register({ fullName, email, password })
             .then(
                 setFullName(''),
                 setEmail(''),
@@ -33,7 +28,7 @@ const Register = () => {
                 <div className="singin">
                     <Row className="justify-content-center">
                         <div className="col-lg-5">
-                            <Card className="shadow">
+                            <Card className="shadow mb-5">
                                 <div className="card-header pt-4 pb-4 text-center color">
                                     <img src={Logo} alt="ADA admin logo" height="50" />
                                 </div>
@@ -99,8 +94,8 @@ const Register = () => {
                                                 </InputGroup.Append>
                                             </InputGroup>
                                         </Form.Group>
-                                        <Form.Group className="mt-3">
-                                            <Form.Check required label="Remember Me" />
+                                        <Form.Group className="mt-3 mb-3">
+                                            <Form.Check required label="I accept Terms and Conditions" />
                                         </Form.Group>
                                         <Form.Group className="text-center">
                                             <Button className="btn-color" type="submit">
@@ -118,4 +113,4 @@ const Register = () => {
     );
 };
 
-export { Register };
+export { SingIn };

@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import { Layout, Main } from "../../../components";
+import { Link } from 'react-router-dom'
 import Logo from "../../../assets/img/logo-fucsia-Ada.png";
-import { Row, Card, Form, InputGroup, Button } from "react-bootstrap";
+import { Row, Card, Form, InputGroup, Button, Col } from "react-bootstrap";
 import "./login.css";
 import { useAuth } from '../../../hooks';
 
 const Login = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-
-    const { login } = useAuth()
+    const { login, authMsgError } = useAuth()
 
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        login(
-            {
-                email,
-                password,
-            })
+        login({ email, password })
             .then(
                 setEmail(''),
                 setPassword('')
             )
     };
+
     return (
         <Layout hideHeader={true} hideAside={true}>
             <Main className={"backGround"}>
@@ -73,6 +70,9 @@ const Login = () => {
                                         <Form.Group className="mt-3">
                                             <Form.Check required label="Remember Me" />
                                         </Form.Group>
+                                        {
+                                            authMsgError != null ? (<div className="alert alert-danger p-2 m-2" role="alert"> {authMsgError} </div>) : (<span></span>)
+                                        }
                                         <Form.Group className="text-center">
                                             <Button className="btn-color" type="submit">
                                                 Log In
@@ -81,6 +81,11 @@ const Login = () => {
                                     </Form>
                                 </Card.Body>
                             </Card>
+                            <Col className="text-center mt-3">
+                                <p className="text-muted">Don't have an account?
+                                <Link to="/register" className="text-muted ml-1"><b>Sign Up</b></Link>
+                                </p>
+                            </Col>
                         </div>
                     </Row>
                 </div>

@@ -1,33 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../../../utils";
 import { useTranslation } from "react-i18next";
 import { Layout, Main } from "../../../../components";
-import { objectToArray } from "../../../../helpers";
 import { TableUsers } from "./components";
-import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container'
+import { Table, Container } from 'react-bootstrap';
+import { user } from '../../../../utils';
 
 
 const User = () => {
     const [t] = useTranslation("global");
     const [users, setUsers] = useState([]);
 
-    const getApi = () => {
-        api
-            .get("/users.json")
-            .then((response) => {
-                const data = objectToArray(response.data);
-                setUsers(data);
-            })
-            .catch((error) => console.log(error));
-    }
-
-    useEffect(() => {
-        getApi();
+    useEffect(async () => {
+        setUsers(await user.get());
     }, []);
+
     return (
         <Layout>
-            <Main showButton={true} title={t("main.titleUser")} txt={t("main.btnuser")} link={('/addUsers')} className={"bg-light main"} >
+            <Main showButton={true} title={t("main.titleUser")} txt={t("main.btnuser")} link={('/users/add')} className={"bg-light main"} >
                 <Container>
                     <Table striped bordered hover p-5>
                         <thead className="text-center">

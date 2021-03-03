@@ -6,7 +6,8 @@
     min-width: 200px;
     padding: 20px;
     line-height: 2.5;
-    height: 800px;
+    min-height: 780px;
+    height: auto;
   }
   
   /**

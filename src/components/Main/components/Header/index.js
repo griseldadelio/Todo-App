@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import './header.css'
 
 const Header = ({ showButton, title, txt, link }) => {

@@ -8,7 +8,8 @@ export const Tasks = () => {
         <Router>
             <Switch>
                 <Route path='/tasks/add' component={Add} />
-                <Route path='/tasks/' component={List} />
+                <Route path='/tasks/edit/:id' component={Add} />
+                <Route path='/tasks' component={List} />
             </Switch>
         </Router>
     )

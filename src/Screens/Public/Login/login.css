@@ -2,7 +2,7 @@
     height: 650px;
 }
 .color{
-    background-color: #727cf5 ;
+    background-color: #36363b ;
 }
 .form-check-input:checked{
     background-color:#727cf5 !important ;
@@ -22,7 +22,4 @@
 
 a:link, a:visited, a:active {
     text-decoration:none;
-}
-.show{
-    display: none;
 }

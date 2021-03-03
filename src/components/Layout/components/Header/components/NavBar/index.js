@@ -1,25 +1,16 @@
 import React from "react";
-import { Search } from "react-bootstrap-icons";
-import { Bell, ArrowLeft } from "react-bootstrap-icons";
-import { Grid3x3GapFill } from "react-bootstrap-icons";
-import { Gear } from "react-bootstrap-icons";
+import { Bell, ArrowLeft, Grid3x3GapFill, PersonX, Search } from "react-bootstrap-icons";
 import { useHistory } from "react-router-dom";
 import avatar from "../../../../../../assets/img/avatar.gri.jpeg";
-
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Container from 'react-bootstrap/Container';
+import { DropdownButton, Dropdown, Nav, Navbar, Form, FormControl, InputGroup, Container } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+import { useAuth } from '../../../../../../hooks';
+
 
 const NavBar = () => {
     const { goBack } = useHistory();
     const [t, i18n] = useTranslation("global");
+    const { logout } = useAuth()
 
     return (
         <Nav className="navbar-expand-lg navbar-light">
@@ -62,28 +53,35 @@ const NavBar = () => {
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#">
-                                <Gear />
+                            <Nav.Link href="/logout">
+                                <PersonX className="PersonX" onClick={logout} />
                             </Nav.Link>
                         </Nav.Item>
-                        <li className="nav-item dropdown">
-                            <Nav.Link className="dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src={avatar} alt="user-avatar" width="32" className="rounded-circle ms-1 me-2" />
-                                Griselda De Lio
-                            </Nav.Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <NavDropdown.Item href="https://github.com/griseldadelio" target="_blank">
-                                    Github
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="https://www.linkedin.com/in/griseldadelio" target="_blank">
-                                    Linkedin
-                                </NavDropdown.Item>
-                                <hr className="dropdown-divider" />
-                                <NavDropdown.Item className="dropdown-item" href="#Footer">
-                                    {t("navbar.Contact")}
-                                </NavDropdown.Item>
-                            </ul>
-                        </li>
+                        <Nav.Item>
+                            <nav className="navbar navbar-expand-lg ">
+                                <div className="container-fluid">
+                                    <img src={avatar} alt="user-avatar" width="32" className="rounded-circle ms-1 me-2" />
+                                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span className="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                        <ul className="navbar-nav">
+                                            <Nav.Item className="dropdown">
+                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Griselda De Lio
+                                                </a>
+                                                <ul className="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                    <Dropdown.Item href="https://github.com/griseldadelio">  Github</Dropdown.Item >
+                                                    <Dropdown.Item href="https://www.linkedin.com/in/griseldadelio"> Linkedin</Dropdown.Item >
+                                                    <hr className="dropdown-divider" />
+                                                    <Dropdown.Item href="#Footer"> {t("navbar.Contact")}</Dropdown.Item >
+                                                </ul>
+                                            </Nav.Item>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </Nav.Item>
                     </ul>
                 </Navbar.Collapse>
             </Container >

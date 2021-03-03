@@ -1,14 +1,8 @@
 import React from 'react';
-import { api } from "../../../../../../utils";
+import { PencilFill, TrashFill } from 'react-bootstrap-icons';
 
-const TableUsers = ({ name, lastName, email, password, id }) => {
-    api
-        .patch(`/users/${id}.json`, {
-        })
-        .then((response) => {
-            const data = response.data;
-            console.log(data)
-        });
+const TableUsers = ({ name, lastName, email, password }) => {
+
     return (
         <tbody>
             <tr>
@@ -16,6 +10,8 @@ const TableUsers = ({ name, lastName, email, password, id }) => {
                 <td>{lastName}</td>
                 <td>{email}</td>
                 <td>{password}</td>
+                <td className="text-center"><PencilFill /></td>
+                <td className="text-center"><TrashFill /></td>
             </tr>
         </tbody>
     )

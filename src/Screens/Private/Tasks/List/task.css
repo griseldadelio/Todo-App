@@ -13,11 +13,9 @@
     border: none;
   }
 
-  #div1, #div2, #div3, #div4,#div5 {
-    float: left;
-    width: 200px;
-    height: auto;
+  #div1, #div2, #div3 {
+    width: 375px;
     margin: 5px;
     padding: 5px;
-    border: 1px solid black;
+    min-height: 300px;
   }

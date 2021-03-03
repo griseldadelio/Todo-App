@@ -1,45 +1,63 @@
-import React, { useState } from "react";
-import { api } from "../../../../utils";
+import React, { useState, useEffect } from "react";
+import { useHistory, Link } from 'react-router-dom';
+import { task } from "../../../../utils";
 import { useTranslation } from "react-i18next";
 import { Layout, Main } from "../../../../components";
+import { Form } from 'react-bootstrap';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
-
-const Add = () => {
+const Add = ({ match }) => {
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
     const [description, setDescription] = useState();
     const [assigned, setAssigned] = useState();
-
-    // const [tarea, setTarea] = useState({});
-    // Este handle on change hacia una funcion para todos los inputs
-    // const handleOnChange = (e) => {
-    //   const { name, value } = e.target;
-    //   // setTarea({ ...tarea, [name]: value });
-    // };
-
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        api.post("/tareas.json", {
-            title: title,
-            date: date,
-            description: description,
-            assigned: assigned,
-        })
-            .then(() => {
-                setTitle("")
-                setDate("")
-                setDescription("")
-                setAssigned("")
-            })
-    };
+    const [isLoading, setIsLoading] = useState(false);
+    const [msj, setMsj] = useState(null);
+    const history = useHistory();
+    const id = match.params.id;
     const [t] = useTranslation("global");
+
+    const createTask = async () => {
+        await task.post({ title, date, assigned, description });
+        alert('Tu tarea se cargo exitosamente');
+    }
+
+
+    const updateTask = () => {
+        setIsLoading(true);
+        task.patch(id, { title, date, assigned, description })
+        setIsLoading(false);
+        setMsj("Se Actualizo de forma exitosa");
+        history.push('/tasks/');
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (id) {
+            updateTask();
+        } else {
+            createTask();
+        }
+    }
+
+    useEffect(async () => {
+        if (id) {
+            await task.getId(id)
+                .then(response => {
+                    setTitle(response.title);
+                    setDate(response.date);
+                    setAssigned(response.assigned);
+                    setDescription(response.description)
+                })
+        }
+    }, [])
+
 
     return (
         <Layout>
-            <Main title={t("form.titleFormTask")} className={"bg-light main"}>
-                <Form onSubmit={handleOnSubmit}>
+            <Main title={t("form.titleFormTask")} className={"main"}>
+                <Form onSubmit={handleSubmit}>
+                    {isLoading && "Cargando .........."}
+                    {msj}
                     <Form.Group className="col-6">
                         <Form.Label className="mb-2">{t("form.title")}</Form.Label>
                         <input className="form-control form-control-light mb-3" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -50,8 +68,8 @@ const Add = () => {
                         <Form.Label className="mb-2">{t("form.desc")}</Form.Label>
                         <textarea className="form-control form-control-light mb-3" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <div className="mt-3">
-                            <Button type="button" className="btn btn-light border border-secondary mx-1">{t("form.cancel")}</Button>
-                            <Button type="submit" className="btn btn-primary">{t("form.create")}</Button>
+                            <Link type="button" className="btn btn-light border border-secondary mx-1" to={'/tasks/'}>{t("form.cancel")}</Link>
+                            <Link type="submit" className="btn btn-primary" to={'/tasks/'}>{t("form.create")}</Link>
                         </div>
                     </Form.Group>
                 </Form>
