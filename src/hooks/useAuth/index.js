@@ -55,7 +55,6 @@ const useAuth = () => {
 
     useEffect(() => {
         firebaseAuth.auth().onAuthStateChanged((user) => {
-            console.log(user)
             const token = localStorage.getItem('userToken');
             if (token && token === user.refreshToken)
                 setIsAuthenticated(true)

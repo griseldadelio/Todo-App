@@ -10,12 +10,11 @@ const get = async () => {
 }
 
 const post = async (task) => {
-    const data = await api({
+    await api({
         method: 'post',
         url: '/tareas.json',
         data: task
     });
-    console.log('estoy aca' + data)
 }
 
 const getId = async (id) => {

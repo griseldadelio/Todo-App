@@ -22,7 +22,9 @@
         "name": "Name",
         "lastName": "Last Name",
         "email": "Email",
-        "password": "Password"
+        "password": "Password",
+        "delete": "delete",
+        "edit": "edit"
     },
     "aside": {
         "add": "Add",

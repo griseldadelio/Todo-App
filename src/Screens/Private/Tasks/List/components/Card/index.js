@@ -7,6 +7,7 @@ import { PencilFill } from "react-bootstrap-icons";
 
 const CardTask = ({ title, description, assigned, date, status, id }) => {
     const [taskStatus, setTaskStatus] = useState(status);
+
     const handleOnClick = (status) => {
         setTaskStatus(status);
         task.patch(id, { status })

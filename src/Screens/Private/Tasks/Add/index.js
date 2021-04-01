@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { task } from "../../../../utils";
 import { useTranslation } from "react-i18next";
 import { Layout, Main } from "../../../../components";
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 const Add = ({ match }) => {
     const [title, setTitle] = useState();
@@ -19,6 +19,7 @@ const Add = ({ match }) => {
     const createTask = async () => {
         await task.post({ title, date, assigned, description });
         alert('Tu tarea se cargo exitosamente');
+        history.push('/tasks/');
     }
 
 
@@ -39,9 +40,9 @@ const Add = ({ match }) => {
         }
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         if (id) {
-            await task.getId(id)
+            task.getId(id)
                 .then(response => {
                     setTitle(response.title);
                     setDate(response.date);
@@ -69,7 +70,7 @@ const Add = ({ match }) => {
                         <textarea className="form-control form-control-light mb-3" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <div className="mt-3">
                             <Link type="button" className="btn btn-light border border-secondary mx-1" to={'/tasks/'}>{t("form.cancel")}</Link>
-                            <Link type="submit" className="btn btn-primary" to={'/tasks/'}>{t("form.create")}</Link>
+                            <Button type="submit" className="btn btn-primary" to={'/tasks/'}>{t("form.create")}</Button>
                         </div>
                     </Form.Group>
                 </Form>

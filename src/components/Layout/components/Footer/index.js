@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import "./footer.css";
 
 const Footer = () => {
@@ -10,16 +9,16 @@ const Footer = () => {
                     <b> De Lio Griselda &nbsp; {new Date().getFullYear()}</b>
                 </div>
                 <div className="flex-shrink-1 me-2">
-                    <Link className="size" to={"https://github.com/griseldadelio"}><i class="bi bi-github"></i></Link>
+                    <a className="size" href={"https://github.com/griseldadelio"} target='_blank'><i className="bi bi-github"></i></a>
                 </div>
                 <div className="flex-shrink-1 me-2">
-                    <Link className="size" to={"www.linkedin.com/in/griseldadelio"}><i class="bi bi-linkedin"></i></Link>
+                    <a className="size" href={"https://www.linkedin.com/in/griseldadelio"} target='_blank'><i className="bi bi-linkedin"></i></a>
                 </div>
                 <div className="flex-shrink-1 me-2">
-                    <Link className="size" to={"https://api.whatsapp.com/send?phone=5491154057431"}><i class="bi bi-whatsapp"></i></Link>
+                    <a className="size" href={"https://api.whatsapp.com/send?phone=5491154057431"} target='_blank'><i className="bi bi-whatsapp"></i></a>
                 </div>
                 <div className="flex-shrink-1 me-4">
-                    <Link className="size" to={"mailto:griseldadelio@gmail.com"}><i class="bi bi-envelope-fill"></i></Link>
+                    <a className="size" href={"mailto:griseldadelio@gmail.com"} target='_blank'><i className="bi bi-envelope-fill"></i></a>
                 </div>
             </div>
         </footer>

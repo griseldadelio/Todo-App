@@ -38,7 +38,7 @@ const List = () => {
                     {tasks.map(({ title, date, assigned, description, status, id }) => {
                         return (
                             <div id={`drag${id}`} draggable="true" onDragStart={e => drag(e)} className='mb-2'>
-                                <CardTask className="m-3" style={{ width: "18rem", border: "1px solid" }}
+                                <CardTask key={tasks.id} className="m-3" style={{ width: "18rem", border: "1px solid" }}
                                     title={title}
                                     description={description}
                                     assigned={assigned}

@@ -3,6 +3,7 @@ import { Layout, Main } from "../../../components";
 import Logo from "../../../assets/img/logo-fucsia-Ada.png";
 import { Row, Card, Form, InputGroup, Button } from "react-bootstrap";
 import { useAuth } from '../../../hooks';
+import { Link } from "react-router-dom";
 
 const SingIn = () => {
     const [fullName, setFullName] = useState()
@@ -99,7 +100,9 @@ const SingIn = () => {
                                         </Form.Group>
                                         <Form.Group className="text-center">
                                             <Button className="btn-color" type="submit">
-                                                Log In
+                                                <Link to={'/'}>
+                                                    Sign In
+                                                </Link>
                                             </Button>
                                         </Form.Group>
                                     </Form>

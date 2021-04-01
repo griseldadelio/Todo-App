@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useHistory, Link } from 'react-router-dom';
 import { user } from "../../../../utils";
 import { useTranslation } from "react-i18next";
 import { Layout, Main } from "../../../../components";
 import { Form, Button } from 'react-bootstrap';
-import { useHistory, Link } from 'react-router-dom';
 
-
-
-const AddUsersForm = ({ match }) => {
+const Add = ({ match }) => {
     const [name, setName] = useState();
     const [lastName, setlastName] = useState();
     const [email, setEmail] = useState();
@@ -15,41 +13,40 @@ const AddUsersForm = ({ match }) => {
     const [showPassword, setShowPassword] = useState(false);
     const history = useHistory();
     const id = match.params.id;
+    const [t] = useTranslation("global");
 
     const createUser = async () => {
         await user.post({ name, lastName, email, password });
-        setName('');
-        setlastName('');
-        setEmail('');
-        setPassword('');
-    }
-
-    const updateUser = async () => {
-        await user.patch(id, { name, lastName, email, password })
+        alert('Usuario cargado exitosamente');
         history.push('/users/');
     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const updateUser = () => {
+        user.patch(id, { name, lastName, email, password })
+        history.push('/users/');
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (id) {
-            await updateUser();
+            updateUser();
         } else {
-            await createUser();
+            createUser();
         }
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         if (id) {
-            await user.getId(id)
+            user.getId(id)
                 .then(response => {
-                    setName(response.name);
-                    setlastName(response.lastname);
-                    setEmail(response.email);
-                    setPassword(response.password)
+                    console.log(response)
+                    // setName(response.name);
+                    // setlastName(response.lastName);
+                    // setEmail(response.email);
+                    // setPassword(response.password)
                 })
         }
     }, [])
-    const [t] = useTranslation("global");
 
     return (
         <Layout>
@@ -66,7 +63,7 @@ const AddUsersForm = ({ match }) => {
                         <input className="form-control form-control-light mb-3" type={showPassword ? "text" : "password"} name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <div className="mt-3">
                             <Link to={'/users/'} type="button" className="btn btn-light border border-secondary mx-1">{t("form.cancel")}</Link>
-                            <Link to={'/users/'} type="submit" className="btn btn-primary mx-1">{t("form.add")}</Link>
+                            <Button type="submit" className="btn btn-primary mx-1">{t("form.add")}</Button>
                             <Button type="button" onClick={() => setShowPassword(!showPassword)} className="btn btn-info">Ver Password</Button>
                         </div>
                     </Form.Group>
@@ -76,4 +73,4 @@ const AddUsersForm = ({ match }) => {
     )
 }
 
-export { AddUsersForm }
+export { Add }

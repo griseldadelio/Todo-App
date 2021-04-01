@@ -83,7 +83,7 @@ const Login = () => {
                             </Card>
                             <Col className="text-center mt-3">
                                 <p className="text-muted">Don't have an account?
-                                <Link to="/register" className="text-muted ml-1"><b>Sign Up</b></Link>
+                                <Link to="/singin" className="text-muted ml-1"><b>Sign Up</b></Link>
                                 </p>
                             </Col>
                         </div>
