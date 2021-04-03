@@ -34,5 +34,11 @@ const patch = async (id, user) => {
     })
 }
 
+const Delete = async (id) => {
+    await api({
+        method: 'DELETE',
+        url: '/users/' + id + '.json'
+    })
+}
 
-export const user = { post, get, patch, getId };
+export const user = { post, get, patch, getId, Delete };

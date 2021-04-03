@@ -4,8 +4,6 @@ import { Layout, Main } from "../../../../components";
 import { TableUsers } from "./components";
 import { Table, Container } from 'react-bootstrap';
 import { user } from '../../../../utils';
-import { api } from '../../../../utils'
-
 
 const User = () => {
     const [t] = useTranslation("global");
@@ -23,11 +21,9 @@ const User = () => {
         getUser()
     }, []);
 
-    const deleteUser = async (id) => {
-        await api({
-            method: 'DELETE',
-            url: '/users/' + id + '.json'
-        })
+    const deleteUser = (id) => {
+        user.Delete(id)
+            .then(() => getUser())
     }
 
     return (
@@ -46,7 +42,7 @@ const User = () => {
                         </thead>
                         {users.map(({ name, lastName, email, id }) => {
                             return (
-                                <TableUsers key={id} name={name} lastName={lastName} email={email} handleClickDelete={deleteUser} />
+                                <TableUsers key={id} id={id} name={name} lastName={lastName} email={email} handleClickDelete={deleteUser} />
                             );
                         })}
                     </Table>

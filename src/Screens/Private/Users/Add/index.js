@@ -39,11 +39,10 @@ const Add = ({ match }) => {
         if (id) {
             user.getId(id)
                 .then(response => {
-                    console.log(response)
-                    // setName(response.name);
-                    // setlastName(response.lastName);
-                    // setEmail(response.email);
-                    // setPassword(response.password)
+                    setName(response.name);
+                    setlastName(response.lastName);
+                    setEmail(response.email);
+                    setPassword(response.password)
                 })
         }
     }, [])

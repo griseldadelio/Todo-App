@@ -1,6 +1,6 @@
 import React from 'react'
 import { AuthProvider } from "./contexts";
-import { AuthRoute } from './screens';
+import { AuthRoute } from './Screens';
 
 const App = () => {
 
